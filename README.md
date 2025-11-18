@@ -71,4 +71,20 @@ Prueba 3
 
 
 
->>>>>>> effe425 (Subida inicial UT03: Navegación y Routing)
+Práctica UT03: Navegación y Routing
+
+Página inicio
+<img width="1912" height="1079" alt="image" src="https://github.com/user-attachments/assets/44d13d4b-7d1b-4805-8972-ce77dbea2bd2" />
+
+Página Catálogo
+<img width="1923" height="991" alt="image" src="https://github.com/user-attachments/assets/91c2eb9a-23f8-47ea-8e81-5c42bf8ef070" />
+
+Página Fichas
+- Si no se selecciona un animal desde catálogo y el usuario se dirige primero a fichas, saldrá de esta forma
+<img width="1910" height="1015" alt="image" src="https://github.com/user-attachments/assets/0bf288b9-c1c6-4e7d-bbf9-56574b3c9bed" />
+
+- Si selecciona una ficha desde el catálogo 
+<img width="3000" height="1020" alt="image" src="https://github.com/user-attachments/assets/825d83f3-b7ce-4811-98c2-63f81d98e581" />
+
+
+
