@@ -84,7 +84,8 @@ Página Fichas
 <img width="1910" height="1015" alt="image" src="https://github.com/user-attachments/assets/0bf288b9-c1c6-4e7d-bbf9-56574b3c9bed" />
 
 - Si selecciona una ficha desde el catálogo 
-<img width="3000" height="1020" alt="image" src="https://github.com/user-attachments/assets/825d83f3-b7ce-4811-98c2-63f81d98e581" />
+
+<img width="1916" height="1033" alt="image" src="https://github.com/user-attachments/assets/ae474c3f-79f2-4a65-b430-a4a3d3507313" />
 
 
 
