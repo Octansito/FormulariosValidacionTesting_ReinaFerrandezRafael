@@ -124,7 +124,6 @@
 
 // export default NavigationBar;
 import { useState } from "react";
-import menuIcon from "../assets/menu.png";
 import { NavLink } from "react-router-dom";
 
 function NavigationBar() {
@@ -132,101 +131,100 @@ function NavigationBar() {
 
   return (
     <>
-      {/* Botón hamburguesa SOLO en móvil/tablet */}
+      {/* HAMBURGUESA: SOLO MÓVIL (<md) */}
       <button
         aria-label="Abrir menú"
         aria-expanded={open}
         aria-controls="menu-principal"
-        className="lg:hidden bg-transparent p-0 m-0 hover:scale-110 transition focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)] rounded-lg"
+        className="
+          md:hidden
+          inline-flex items-center justify-center
+          text-white text-[34px]
+          w-11 h-11
+          rounded-lg
+          transition hover:scale-110
+          focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2
+          focus:ring-offset-[var(--colorprimary)]
+        "
         onClick={() => setOpen(!open)}
       >
-        <img
-          src={menuIcon}
-          alt=""
-          aria-hidden="true"
-          className="h-5 w-5 sm:h-10 sm:w-10 lg:h-10 lg:w-10"
-        />
+        ☰
       </button>
 
-      {/* MENÚ ESCRITORIO */}
-      <nav
-        className="hidden lg:flex gap-6 ml-auto"
-        aria-label="Navegación principal"
-      >
+      {/* LINKS: TABLET + ESCRITORIO (md+) */}
+      <nav className="hidden md:flex gap-6" aria-label="Navegación principal">
         <NavLink
+          className="text-white text-[20px] lg:text-[22px] font-semibold hover:underline rounded-lg
+                            focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)]"
           to="/"
-          className="text-white text-[22px] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)] rounded-lg"
         >
           Inicio
         </NavLink>
-
         <NavLink
+          className="text-white text-[20px] lg:text-[22px] font-semibold hover:underline rounded-lg
+                            focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)]"
           to="/catalogo"
-          className="text-white text-[22px] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)] rounded-lg"
         >
           Catálogo
         </NavLink>
-
         <NavLink
+          className="text-white text-[20px] lg:text-[22px] font-semibold hover:underline rounded-lg
+                            focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)]"
           to="/fichas"
-          className="text-white text-[22px] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)] rounded-lg"
         >
           Fichas
         </NavLink>
-
         <NavLink
+          className="text-white text-[20px] lg:text-[22px] font-semibold hover:underline rounded-lg
+                            focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)]"
           to="/admin"
-          className="text-white text-[22px] font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)] rounded-lg"
         >
           Admin
         </NavLink>
       </nav>
 
-      {/* MENÚ MÓVIL / TABLET */}
+      {/* DESPLEGABLE: SOLO MÓVIL (<md) */}
       <nav
         id="menu-principal"
         role="navigation"
         aria-label="Menú móvil"
         className={`${
           open ? "block" : "hidden"
-        } lg:hidden bg-[var(--colorprimary)] px-6 py-4 absolute left-0 right-0 top-[45px] sm:top-[60px]`}
+        } md:hidden bg-[var(--colorprimary)] px-6 py-4 absolute left-0 right-0 top-[45px] sm:top-[60px]`}
       >
-        <ul className="flex flex-col gap-6 text-white font-semibold text-[20px] sm:text-[26px]">
+        <ul className="flex flex-col gap-6 text-white font-semibold text-[20px]">
           <li>
             <NavLink
               to="/"
               onClick={() => setOpen(false)}
-              className="focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)] rounded-lg"
+              className="rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)]"
             >
               Inicio
             </NavLink>
           </li>
-
           <li>
             <NavLink
               to="/catalogo"
               onClick={() => setOpen(false)}
-              className="focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)] rounded-lg"
+              className="rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)]"
             >
               Catálogo
             </NavLink>
           </li>
-
           <li>
             <NavLink
               to="/fichas"
               onClick={() => setOpen(false)}
-              className="focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)] rounded-lg"
+              className="rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)]"
             >
               Fichas
             </NavLink>
           </li>
-
           <li>
             <NavLink
               to="/admin"
               onClick={() => setOpen(false)}
-              className="focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)] rounded-lg"
+              className="rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--colorprimary)]"
             >
               Admin
             </NavLink>
