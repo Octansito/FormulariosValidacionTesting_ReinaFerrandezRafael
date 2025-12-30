@@ -4,9 +4,8 @@
  */
 
 import PetCard from "./PetCard";
-import animales from "../data/animales";
 
-function PetList() {
+function PetList({ animales }) {
   return (
     <main aria-label="Listado de animales" role="main">
       {/* Sección Perros */}
@@ -19,8 +18,8 @@ function PetList() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-4 w-full mt-8">
-          {animales.perros.map((animal, i) => (
-            <PetCard key={i} {...animal} />
+          {animales.perros.map((animal) => (
+            <PetCard key={animal.id} {...animal} />
           ))}
         </div>
       </section>
@@ -34,8 +33,8 @@ function PetList() {
           Sección Gatos
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-4 w-full mt-8">
-          {animales.gatos.map((animal, i) => (
-            <PetCard key={i} {...animal} />
+          {animales.gatos.map((animal) => (
+            <PetCard key={animal.id} {...animal} />
           ))}
         </div>
       </section>
@@ -49,8 +48,8 @@ function PetList() {
           Sección Adoptados
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-4 w-full mt-8">
-          {animales.adoptados.map((animal, i) => (
-            <PetCard key={i} {...animal} />
+          {animales.adoptados.map((animal) => (
+            <PetCard key={animal.id} {...animal} />
           ))}
         </div>
       </section>
