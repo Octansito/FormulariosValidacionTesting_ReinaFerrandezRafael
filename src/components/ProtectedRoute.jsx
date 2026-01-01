@@ -8,8 +8,10 @@ import useAuth from "../auth/useAuth";
 function ProtectedRoute({ children }) {
   const { isAuth } = useAuth();
   if (!isAuth) {
-    return <Navigate to="/login" />;
+    /**Si no está autenticado te vas a login */
+    return <Navigate to="/login" replace />;
   }
+  /**Si está autenticado devuelveo el componente progetido */
   return children;
 }
 

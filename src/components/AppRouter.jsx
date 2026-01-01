@@ -6,11 +6,14 @@ import Fichas from "../pages/Fichas";
 import Admin from "../pages/Admin";
 import Contenedor from "./Contenedor";
 import Login from "../pages/Login.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
+import FormControlado from "./FormularioControladoAnimal.jsx";
 
 /**
  *
- * @returns
+ *
  */
+
 function AppRouter() {
   return (
     <Routes>
@@ -19,7 +22,18 @@ function AppRouter() {
         <Route path="/inicio" element={<Navigate to="/" />} />
         <Route path="/catalogo" element={<Catalogo />} />
         <Route path="/fichas" element={<Fichas />} />
-        <Route path="/admin" element={<Admin />} />
+        {/**Envolvemos la ruta admin con protectedRoute, es nuestro children */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        >
+          {/* subruta del formulario dentrod de admin*/}
+          <Route path="animalformcont" element={<FormControlado />} />
+        </Route>
         <Route path="/login" element={<Login />} />
       </Route>
 
