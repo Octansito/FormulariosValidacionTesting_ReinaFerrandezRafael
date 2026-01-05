@@ -54,7 +54,39 @@ Dame una estructura de test (esqueleto) y ejemplos de líneas clave, pero con ex
   - **Act:** Simulo el click del usuario con `userEvent.click(...)`.
   - **Assert:** Compruebo que `aria-pressed` cambia de `false` a `true` y que ahora el botón tiene nombre accesible “Quitar de favoritos”.
   - **Selector destacado:**
-    - `getByRole("button", { name: ... })` selecciona por rol accesible + nombre accesible.
+    - `getByRole("button", { name: ... })` selecciona por rol accesible y nombre accesible.
 
+Captura de pantalla:
 ![alt text](image-1.png)
 ![alt text](image-2.png)
+
+## Actividad 3
+
+- **Reto: Seguridad** Comprobar que el acceso a la ruta `/admin` está protegido:
+
+  - Si NO hay autenticación, redirige y muestra Login.
+  - Si SÍ hay autenticación, permite entrar y muestra la página de administración.
+
+- \**Prompt IA:*Actúa como profesor. Quiero aprender a diseñar un test para una ruta protegida /admin en React Router con Vitest + React Testing Library, no solo copiar código.
+
+Explícame qué debo revisar en mi proyecto para identificar cómo se decide la autenticación (localStorage, context, token, etc.).
+
+Guíame sobre cómo simular navegación a /admin usando MemoryRouter y initialEntries, explicando por qué se usa.
+
+Indícame cuándo y por qué debo envolver el render con AuthProvider (o el provider que use mi app) y qué pasa si no lo hago.
+
+Propón los casos de prueba mínimos (no autenticado vs autenticado) y describe qué asserts debería hacer en cada caso.
+
+Dame un esqueleto AAA (Arrange/Act/Assert) con ejemplos de 2–3 líneas clave, explicando el porqué (por ejemplo, findByRole vs getByRole).
+
+Enumera errores típicos (Router/redirect/asíncrono) y cómo diagnosticarlos/solucionarlos (por ejemplo usando screen.debug()).\*
+
+- **Explicación del Test:**
+  - **Arrange:** Renderizo el router con `MemoryRouter initialEntries={["/admin"]}` para arrancar directamente en /admin. Envuelo con `AuthProvider` porque el control de acceso depende del contexto de autenticación.
+  - **Act:** No hay interacción manual; la acción ocurre al renderizar.
+  - **Assert:** Compruebo qué pantalla se renderiza usando `findByRole(...)`.
+  - **Selector destacado:**
+    - `findByRole(...)` espera a que aparezca el elemento.
+
+Caputad de pantalla:
+![alt text](image-3.png)
