@@ -36,4 +36,35 @@ describe("Formulario Controlado- validaciones", () => {
       await screen.findByText(/el identificador del chip es obligatorio/i)
     ).toBeInTheDocument();
   });
+  test("Si los datos son válidos y chip='No', al enviar se resetea el formulario", async () => {
+    // Arrange
+    render(<FormControlado />);
+    const user = userEvent.setup();
+
+    // Act: relleno datos válidos (chip = No)
+    await user.type(screen.getByLabelText(/^nombre$/i), "Bobby");
+    await user.type(screen.getByLabelText(/^raza$/i), "Pastor Aleman");
+    await user.type(screen.getByLabelText(/^género$/i), "Macho");
+    await user.clear(screen.getByLabelText(/^edad$/i));
+    await user.type(screen.getByLabelText(/^edad$/i), "5");
+    await user.type(screen.getByLabelText(/^ubicación$/i), "Elche");
+    await user.type(screen.getByLabelText(/^tamaño$/i), "mediano");
+
+    await user.selectOptions(screen.getByLabelText(/¿tiene chip\?/i), "No");
+
+    await user.type(
+      screen.getByLabelText(/url de imagen/i),
+      "http://ejmeplo2Pastor.com/img.jpg"
+    );
+
+    await user.type(screen.getByLabelText(/^descripción$/i), "a".repeat(110));
+    await user.selectOptions(screen.getByLabelText(/^categoría$/i), "perro");
+
+    await user.click(screen.getByRole("button", { name: /añadir animal/i }));
+
+    // Assert: si se envió correctamente, el estado vuelve a animalInfo (inputs vacíos)
+    expect(screen.getByLabelText(/^nombre$/i)).toHaveValue("");
+    expect(screen.getByLabelText(/^raza$/i)).toHaveValue("");
+    expect(screen.getByLabelText(/^género$/i)).toHaveValue("");
+  });
 });

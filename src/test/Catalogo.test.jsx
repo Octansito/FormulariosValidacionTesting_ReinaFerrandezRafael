@@ -27,7 +27,7 @@ describe("Catalogo - búsqueda", () => {
     // Opción A (si el nombre del animal se renderiza como texto visible)
     expect(screen.getByText(/tobby/i)).toBeInTheDocument();
 
-    // Opción B (si quieres comprobar que otro NO está)
+    // Opción B (comprobar que otro NO está)
     expect(screen.queryByText(/dumbo/i)).not.toBeInTheDocument();
   });
 });

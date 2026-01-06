@@ -29,12 +29,12 @@ Captura de pantalla:
 
 ## Actividad 2
 
-- **Reto: Regresión: ** Comprobación de que el botón de favorito en una tarjeta cambia su estado al pulsarlo: cambia `aria-pressed` y el texto accesible (`aria-label`) de “Marcar como favorito” a “Quitar de favoritos”.
+- **Reto: Regresión: ** Comprobación de que el botón de favorito en una tarjeta cambia su estado al pulsarlo: cambia `aria-pressed` y el texto accesible (`aria-label`) de “Marcar como favorito” a “Quitar de favoritos”\*\*.
 
 - \*Prompt IA: Actúa como profesor. No quiero que me lo hagas sin explicar ni quiero copiar y pegar: quiero aprender a diseñar el test.
   Guíame paso a paso para testear un botón ‘Favorito’ en React con Vitest + React Testing Library siguiendo AAA.
 
-Dime qué tengo que mirar en el componente para decidir qué wrappers necesito (Router, Providers).
+Dime qué tengo que mirar en el componente para decidir qué wrappers necesito.
 
 Dime qué atributos/elementos debo buscar para elegir el selector correcto (role, aria-label, aria-pressed).
 
@@ -57,7 +57,7 @@ Captura de pantalla:
 
 ## Actividad 3
 
-- **Reto: Seguridad** Comprobar que el acceso a la ruta `/admin` está protegido:
+- **Reto: Seguridad** Comprobar que el acceso a la ruta `/admin` está protegido\*\* :
 
   - Si NO hay autenticación, redirige y muestra Login.
   - Si SÍ hay autenticación, permite entrar y muestra la página de administración.
@@ -86,9 +86,10 @@ Caputad de pantalla:
 
 ## Actividad 4
 
-**Reto: Validación / Seguridad de inputs - Formulario controlado** Comprobar validaciones del formulario:
+**Reto: Validación / Seguridad de inputs - Formulario controlado** Comprobar validaciones del formulario\*\*:
 
 1. Si “Chip = Sí” y el número de chip está vacío, debe aparecer el error correspondiente.
+2. Si el formulario se envía correctamente al poner "Chip=No".
 
 - \*Prompt IA: Actúa como profesor. Quiero aprender a diseñar tests de validación para un formulario controlado en React con Vitest + React Testing Library, sin depender de copiar/pegar.
 
@@ -96,7 +97,7 @@ Dime qué tengo que revisar en el JSX del formulario para poder seleccionar camp
 
 Explícame cómo decidir entre getByLabelText, getByRole y getByPlaceholderText, y por qué es mejor que usar querySelector o clases CSS.
 
-Indícame los pasos AAA para el caso: chip=“Sí” y numChip vacío -> debe mostrarse el error (qué rellenar, qué acción dispara la validación, y qué comprobar).\*
+Indícame los pasos AAA para el caso: chip=“Sí” y numChip vacío y para el caso: chip="No" y envío correcto de formulario -> debe mostrarse el error (qué rellenar, qué acción dispara la validación, y qué comprobar).\*
 
 **Explicación del Test:**
 
@@ -106,3 +107,4 @@ Indícame los pasos AAA para el caso: chip=“Sí” y numChip vacío -> debe mo
 
 Captura de pantalla:
 ![alt text](image-4.png)
+![alt text](image-5.png)
