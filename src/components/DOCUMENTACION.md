@@ -23,9 +23,6 @@ Dime errores comunes (router, selectores que no encuentran nada, etc.) y cómo d
   - **Arrange:** Renderizo `<Catalogo />` envuelto en `MemoryRouter` porque el catálogo usa componentes con `Link` (react-router). Localizo el input del buscador con un selector accesible.
   - **Act:** Simulo que el usuario escribe con `userEvent.type(...)` para disparar una simulación de escritura.
   - **Assert:** Verifico que el animal que coincide aparece (con `getByText` o `getByRole`) y que otro animal no aparece usando `queryBy...`.
-  - **Selector destacado:**
-  - `getByPlaceholderText(/Buscar por nombre, raza.../i)` se usa porque el buscador tiene `placeholder`.
-  - `queryBy...` se usa para comprobar ausencia.
 
 Captura de pantalla:
 ![alt text](image.png)
@@ -51,10 +48,8 @@ Dame una estructura de test (esqueleto) y ejemplos de líneas clave, pero con ex
 
   **Arrange:** Renderizo `<PetCard />` con `MemoryRouter` (usa `Link`). Localizo el botón favorito con `getByRole("button", { name: /  Marcar como favorito/i })` porque el componente define `aria-label`.
 
-  - **Act:** Simulo el click del usuario con `userEvent.click(...)`.
-  - **Assert:** Compruebo que `aria-pressed` cambia de `false` a `true` y que ahora el botón tiene nombre accesible “Quitar de favoritos”.
-  - **Selector destacado:**
-    - `getByRole("button", { name: ... })` selecciona por rol accesible y nombre accesible.
+  - **Act:** Creo al usuario simulado, simulo el click del usuario con `userEvent.click(...)`.
+  - **Assert:** Verifico el estado inicial y final del control accesible: aria-pressed cambia de "false" a "true" y el nombre accesible pasa a “Quitar de favoritos”. Esto confirma que el botón refleja correctamente su estado para el usuario.
 
 Captura de pantalla:
 ![alt text](image-1.png)
@@ -67,26 +62,47 @@ Captura de pantalla:
   - Si NO hay autenticación, redirige y muestra Login.
   - Si SÍ hay autenticación, permite entrar y muestra la página de administración.
 
-- \**Prompt IA:*Actúa como profesor. Quiero aprender a diseñar un test para una ruta protegida /admin en React Router con Vitest + React Testing Library, no solo copiar código.
+- \** Prompt IA:*Actúa como profesor. Quiero aprender a diseñar un test para una ruta protegida /admin en React Router con Vitest + React Testing Library, no solo copiar código.
 
 Explícame qué debo revisar en mi proyecto para identificar cómo se decide la autenticación (localStorage, context, token, etc.).
 
 Guíame sobre cómo simular navegación a /admin usando MemoryRouter y initialEntries, explicando por qué se usa.
 
-Indícame cuándo y por qué debo envolver el render con AuthProvider (o el provider que use mi app) y qué pasa si no lo hago.
+Indícame cuándo y por qué debo envolver el render con AuthProvider y qué pasa si no lo hago.
 
 Propón los casos de prueba mínimos (no autenticado vs autenticado) y describe qué asserts debería hacer en cada caso.
 
-Dame un esqueleto AAA (Arrange/Act/Assert) con ejemplos de 2–3 líneas clave, explicando el porqué (por ejemplo, findByRole vs getByRole).
+Dame un esqueleto AAA (Arrange/Act/Assert) con ejemplos de 2–3 líneas clave, explicando el porqué.
 
 Enumera errores típicos (Router/redirect/asíncrono) y cómo diagnosticarlos/solucionarlos (por ejemplo usando screen.debug()).\*
 
 - **Explicación del Test:**
-  - **Arrange:** Renderizo el router con `MemoryRouter initialEntries={["/admin"]}` para arrancar directamente en /admin. Envuelo con `AuthProvider` porque el control de acceso depende del contexto de autenticación.
+  - **Arrange:** Renderizo el router con `MemoryRouter initialEntries={["/admin"]}` para arrancar directamente en /admin. Envuelvo con `AuthProvider` porque el control de acceso depende del contexto de autenticación.
   - **Act:** No hay interacción manual; la acción ocurre al renderizar.
   - **Assert:** Compruebo qué pantalla se renderiza usando `findByRole(...)`.
-  - **Selector destacado:**
-    - `findByRole(...)` espera a que aparezca el elemento.
 
 Caputad de pantalla:
 ![alt text](image-3.png)
+
+## Actividad 4
+
+**Reto: Validación / Seguridad de inputs - Formulario controlado** Comprobar validaciones del formulario:
+
+1. Si “Chip = Sí” y el número de chip está vacío, debe aparecer el error correspondiente.
+
+- \*Prompt IA: Actúa como profesor. Quiero aprender a diseñar tests de validación para un formulario controlado en React con Vitest + React Testing Library, sin depender de copiar/pegar.
+
+Dime qué tengo que revisar en el JSX del formulario para poder seleccionar campos de forma accesible (label, aria-label, placeholder, name, etc.).
+
+Explícame cómo decidir entre getByLabelText, getByRole y getByPlaceholderText, y por qué es mejor que usar querySelector o clases CSS.
+
+Indícame los pasos AAA para el caso: chip=“Sí” y numChip vacío -> debe mostrarse el error (qué rellenar, qué acción dispara la validación, y qué comprobar).\*
+
+**Explicación del Test:**
+
+- **Arrange:** Renderizo el formulario y localizo campos con `getByLabelText(...)`.
+- **Act:** Simulo escritura y selección con `userEvent.type(...)` y `userEvent.selectOptions(...)`. Luego envío con click en el botón submit.
+- **Assert:** Verifico que aparece el mensaje de error esperado con `findByText(...)`.
+
+Captura de pantalla:
+![alt text](image-4.png)
